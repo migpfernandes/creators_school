@@ -1,0 +1,14 @@
+<h1><%= @article.title %></h1>
+<h2>Description:</h2>
+<%= @article.description %>
+<br/>
+<h2>Comments:</h2>
+<ul>
+	<% @article.comments.each do |comment| %>
+		<li>
+				<%= comment.description %> by <%= comment.autor %>
+				<%= link_to "'Edit comment'", edit_article_comment_path(article_id:  @article.id, id: comment.id) %> 
+		</li>
+	<% end %>
+</ul>
+<%= link_to "Add comment", new_article_comment_path(article_id:  @article.id) %> 
